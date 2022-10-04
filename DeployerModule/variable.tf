@@ -28,6 +28,9 @@ variable "instanceType" {
   default = "t2.micro"
 }
 
+variable "securityGroup" {
+  default = "somename"
+}
 
 variable "remoteInline" {
   type = list(string)
