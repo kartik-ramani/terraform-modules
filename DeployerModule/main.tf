@@ -2,7 +2,7 @@
 // Security Group
 
 resource "aws_security_group" "sg" {
-  name        = var.securityGroup
+  name        = "securitygroup"
   description = "Allow HTTP and SSH traffic via Terraform"
 
   ingress {
@@ -66,13 +66,20 @@ resource "aws_instance" "app_server" {
   }
 
 
+
+
   provisioner "remote-exec" {
-    inline = [
+    inline =  var.executionType == 1 ? [
       "sudo apt update",
       "sudo apt upgrade - y",
+     "sudo uwf allow ${var.port}",
       "sudo apt install docker.io -y && sudo docker run -dp ${var.port}:80 ${var.dockerImage}"
+    ] :  [
+        "sudo apt update",
+        "sudo apt upgrade - y",
+        "sudo uwf allow ${var.port}",
+        "sudo apt install docker.io -y && sudo apt install docker-compose -y && git clone ${var.gitUrl} && cd ${var.folderName} && sudo docker-compose up -d "
     ]
-
   }
 
 
