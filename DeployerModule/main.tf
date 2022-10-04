@@ -2,7 +2,7 @@
 // Security Group
 
 resource "aws_security_group" "sg" {
-  name        = "securitygroup"
+  name        = var.securityGroup
   description = "Allow HTTP and SSH traffic via Terraform"
 
   ingress {
