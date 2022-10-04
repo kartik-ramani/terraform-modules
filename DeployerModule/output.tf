@@ -22,7 +22,7 @@ output "keypair" {
   value = aws_key_pair.kp
 }
 
-output "Security Group" {
+output "securitygroup" {
   value = aws_security_group.sg
 }
 
