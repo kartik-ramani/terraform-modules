@@ -8,6 +8,13 @@
         ami - 
 
 **/
+
+
+variable "executionType" {
+  default = 1
+}
+
+
 variable "keyName" {
   default = "mykey"
 }
@@ -28,8 +35,9 @@ variable "instanceType" {
   default = "t2.micro"
 }
 
+
 variable "securityGroup" {
-  default = "somename"
+  default = "SOME"
 }
 
 variable "remoteInline" {
@@ -72,3 +80,8 @@ variable "dockerPassword" {
 variable "gitUrl" {
   default = "https://github.com/docker/getting-started.git"
 }
+
+variable "folderName" {
+  default = "getting-started"
+}
+
